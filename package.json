@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/vmike245/css-utility-belt/issues"
   },
-  "homepage": "https://github.com/vmike245/css-utility-belt#readme",
+  "homepage": "https://vmike245.github.io/css-utility-belt/",
   "devDependencies": {
     "sass": "^1.50.0"
   }
