@@ -1,0 +1,101 @@
+$sizes: (
+  '0': 0px,
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '3': 1rem,
+  '4': 1.5rem,
+  '5': 2.5rem,
+  'auto': 'auto',
+);
+
+// Margin helpers
+
+@each $number, $size in $sizes {
+  .margin-#{$number} {
+    margin: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .margin-top-#{$number} {
+    margin-top: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .margin-right-#{$number} {
+    margin-right: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .margin-bottom-#{$number} {
+    margin-bottom: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .margin-left-#{$number} {
+    margin-left: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .margin-x-#{$number} {
+    margin-left: $size !important;
+    margin-right: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .margin-y-#{$number} {
+    margin-top: $size !important;
+    margin-bottom: $size !important;
+  }
+}
+
+// Padding helpers
+
+@each $number, $size in $sizes {
+  .padding-#{$number} {
+    padding: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .padding-top-#{$number} {
+    padding-top: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .padding-right-#{$number} {
+    padding-right: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .padding-bottom-#{$number} {
+    padding-bottom: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .padding-left-#{$number} {
+    padding-left: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .padding-x-#{$number} {
+    padding-left: $size !important;
+    padding-right: $size !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .padding-y-#{$number} {
+    padding-top: $size !important;
+    padding-bottom: $size !important;
+  }
+}

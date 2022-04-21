@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html class="height-100 width-100">
+  <header>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <style>
+      dt {
+        font-weight: bold;
+      }
+      pre,
+      code {
+        background: var(--gray);
+      }
+      code {
+        padding: 0 3px;
+      }
+    </style>
+  </header>
+  <body class="margin-0 width-100 height-100 flex-row">
+    <nav
+      class="flex-column padding-4 border-right-1 border-black background-gray"
+    >
+      <h4 class="margin-0">Jump to section:</h4>
+      <ul>
+        <li class="text-red"><a href="#purpose">Purpose</a></li>
+      </ul>
+    </nav>
+    <main class="padding-4 overflow-auto">
+      <h1>CSS Utility Belt</h1>
+      <section id="purpose">
+        <h2>Purpose</h2>
+        <p>
+          There are so many choices when it comes to CSS libraries. Then inside
+          of that library there are a ton of different ways to use it. Some of
+          these libraries work well right out of the box, while others require
+          reading about how to configure it to do what you need. The purpose of
+          this library is to be as minimal as possible while still enabling
+          complex UIs. This library won't get rid of all of your CSS, the goal
+          is get rid of 90% of it and the remaining 10% would live at the
+          component level.
+        </p>
+      </section>
+      <section id="differences">
+        <h2>What makes this different than other libraries?</h2>
+        <p>
+          To be honest, not a whole lot. In fact most other CSS libraries
+          already have a lot of this functionality, and more. So why would
+          anyone use this? Because sometimes a limited set of options is more
+          powerful than an infinite one. Limited options can help focus a
+          discussion and allow quick decisions to be made, while also preventing
+          people from focusing on trivial details. <br />Let's use a real life
+          example. I was once talking with a designer about the placement of
+          some text. They wanted the text to have a margin of 34px. We didn't
+          use that margin size anywhere else in the application. That could have
+          triggered an in-depth conversation about why 34px was necessary.
+          Instead I was able to say "We don't have a margin of 34px, but we have
+          32px. Will that work?" The designer said sure, and we moved on. Those
+          2px didn't matter at the end of the day. But from a code perspective
+          it would have created another one off style.<br />You could say that
+          this is an opinionated CSS library. I've taken all of CSS and said
+          "you will probably only need these". Will it limit your creative
+          freedom, yeah probably. Will it help you quickly create UIs without
+          having to decide if a 23px padding or a 24px padding looks better?
+          100% yes.
+        </p>
+      </section>
+      <section id="useage">
+        <h2>Getting Started</h2>
+        <p>
+          All right, I've convinced you. How do you get started? That's simple,
+          in your project just run <code>npm install css-utility-belt</code>.
+          From there you should be able to just import the CSS file and you are
+          done. No compilation step, no configuring.
+        </p>
+      </section>
+      <section id="configuration">
+        <h2>Configuration</h2>
+        <p>
+          Oh you want to configure it? Well the only things that are
+          configurable are the colors. The colors are easy to change though.
+          They are defined using
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"
+            >CSS Custom Properties</a
+          >. The variable names are the colors. So if you want to change the
+          global blue color for example, you just need to set
+          <code>:root { --blue: #2E64FE }</code> and you are done. Due to how
+          CSS cascades, you just need to define these colors after you import
+          the utility belt and it should "just work". This also means that the
+          colors will not work on browsers that do not support CSS custom
+          properties.
+        </p>
+      </section>
+      <section id="questions">
+        <h2>Questions</h2>
+        <p>
+          This section is to answer questions about some divergences from common
+          CSS library practices and implementation details
+        </p>
+        <dl>
+          <dt>
+            Why do you use the actual color names instead of the context that
+            they should be used in? (i.e. text-red v.s. text-error)
+          </dt>
+          <dd>
+            Context classes make a ton of sense until suddenly they don't. For
+            instance, let's say you are making a graph and one of the labels
+            needs to be red. You could use the <code>text-error</code> class,
+            but this isn't an error. So now you have code that incorrectly
+            indicates that this is an error. The other reason is the ease for
+            new developers to learn the classes. If you have just started on a
+            new team. Will you know that to get orange text you need to use the
+            <code>text-tertiary</code> class or is <code>text-orange</code> more
+            obvious?
+          </dd>
+
+          <dt>Why are the class names so verbose?</dt>
+          <dd>
+            This is improve readability and code reviews. While shortening the
+            various words would save a couple of keystrokes, it also makes it
+            slightly harder to read the code. Developers spend way more time
+            reading code than they do actually writing it, so optimizing for
+            reading ease v.s. writing ease I felt made the most sense. It also
+            allows someone who has no concept of what the class names do to
+            guess without having to look at the rendered page. I think an
+            example is the best way to demonstrate this. Take a look at this
+            code snippet
+            <pre
+              class="padding-3"
+            ><code>&lt;section class=&quot;background-blue padding-2 flex-column&quot;&gt;
+  &lt;div class=&quot;border-1 border-red rounded-corners text-red padding-4 margin-bottom-2&quot;&gt;
+    Box 1
+  &lt;/div&gt;
+  &lt;div class=&quot;border-1 border-green rounded-corners text-green padding-4&quot;&gt;
+    Box 2
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+            I bet you have pretty good idea of what this code looks like when it
+            is rendered, and you have never used this library before. Compare
+            this to:
+            <pre
+              class="padding-3"
+            ><code>&lt;section class=&quot;bg-blue p-2 fx-column&quot;&gt;
+  &lt;div class=&quot;b-1 b-red rounded-corners text-red p-4 mb-2&quot;&gt;
+    Box 1
+  &lt;/div&gt;
+  &lt;div class=&quot;b-1 b-green rounded-corners text-green p-4&quot;&gt;
+    Box 2
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+            You could probably guess what the second code snippet does, but it
+            would be a guess. Having confidence that you know what the code does
+            is important. Code that you think you understand, but actually don't
+            is where bugs start to creep in.
+          </dd>
+          <dt>Why does every class use <code>!important</code>?</dt>
+          <dd>
+            This is to make sure that nothing else overrides the style. Since
+            these classes typically translate to one or two CSS styles,
+            overriding a class should never be necessary. If you don't want an
+            element to have a specific style, remove the class instead. This
+            also almost guarantees that the HTML describes exactly what will be
+            rendered. (Technically inline styles could override the class styles
+            but that would mean the styles are still present in the HTML)
+          </dd>
+        </dl>
+      </section>
+      <section id="examples">
+        <h2>Examples</h2>
+        <div id="background-examples">
+          <h3>Background Classes</h3>
+          <dl class="flex-row justify-content-space-between">
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>background-black</code></dt>
+              <dd
+                class="background-black margin-left-0"
+                style="height: 50px; width: 50px"
+              ></dd>
+            </div>
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>background-blue</code></dt>
+              <dd
+                class="background-blue margin-left-0"
+                style="height: 50px; width: 50px"
+              ></dd>
+            </div>
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>background-gray</code></dt>
+              <dd
+                class="background-gray margin-left-0"
+                style="height: 50px; width: 50px"
+              ></dd>
+            </div>
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>background-green</code></dt>
+              <dd
+                class="background-green margin-left-0"
+                style="height: 50px; width: 50px"
+              ></dd>
+            </div>
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>background-orange</code></dt>
+              <dd
+                class="background-orange margin-left-0"
+                style="height: 50px; width: 50px"
+              ></dd>
+            </div>
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>background-red</code></dt>
+              <dd
+                class="background-red margin-left-0"
+                style="height: 50px; width: 50px"
+              ></dd>
+            </div>
+            <div class="flex-column align-items-center">
+              <dt><code>background-white</code></dt>
+              <dd
+                class="background-white margin-left-0"
+                style="height: 50px; width: 50px"
+              ></dd>
+            </div>
+          </dl>
+        </div>
+        <div id="border-examples">
+          <h3>Border Classes</h3>
+          <div>
+            <h4>Border styles</h4>
+            <dl class="flex-row justify-content-space-between">
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-1</code></dt>
+                <dd
+                  class="border-1 margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-top-1</code></dt>
+                <dd
+                  class="border-top-1 margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-right-1</code></dt>
+                <dd
+                  class="border-right-1 margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-bottom-1</code></dt>
+                <dd
+                  class="border-bottom-1 margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-left-1</code></dt>
+                <dd
+                  class="border-left-1 margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>rounded-corners</code></dt>
+                <dd
+                  class="border-1 rounded-corners margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+            </dl>
+          </div>
+          <div>
+            <h4>Border Colors</h4>
+            <dl class="flex-row justify-content-space-between">
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-black</code></dt>
+                <dd
+                  class="border-1 border-black margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-blue</code></dt>
+                <dd
+                  class="border-1 border-blue margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-gray</code></dt>
+                <dd
+                  class="border-1 border-gray margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-green</code></dt>
+                <dd
+                  class="border-1 border-green margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-orange</code></dt>
+                <dd
+                  class="border-1 border-orange margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-red</code></dt>
+                <dd
+                  class="border-1 border-red margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+              <div class="flex-column align-items-center margin-right-2">
+                <dt><code>border-white</code></dt>
+                <dd
+                  class="border-1 border-white margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div id="display-examples">
+          <h3>Display Classes</h3>
+          <dl class="flex-row justify-content-space-between">
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>display-block</code></dt>
+              <dd>display: block !important;</dd>
+            </div>
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>display-inline-block</code></dt>
+              <dd>display: inline-block !important;</dd>
+            </div>
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>display-grid</code></dt>
+              <dd>display: grid !important</dd>
+            </div>
+            <div class="flex-column align-items-center margin-right-2">
+              <dt><code>display-none</code></dt>
+              <dd>display: none !important;</dd>
+            </div>
+          </dl>
+        </div>
+        <div id="flex-examples">
+          <h3>Flex Classes</h3>
+          <dl>
+            <dt><code>flex-column</code></dt>
+            <dd class="flex-column">
+              <div
+                class="background-black margin-bottom-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>flex-row</code></dt>
+            <dd class="flex-row">
+              <div
+                class="background-black margin-right-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>justify-content-start</code></dt>
+            <dd class="flex-row justify-content-start">
+              <div
+                class="background-black margin-right-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>justify-content-center</code></dt>
+            <dd class="flex-row justify-content-center">
+              <div
+                class="background-black margin-right-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>justify-content-end</code></dt>
+            <dd class="flex-row justify-content-end">
+              <div
+                class="background-black margin-right-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>justify-content-space-between</code></dt>
+            <dd class="flex-row justify-content-space-between">
+              <div
+                class="background-black margin-right-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>align-items-start</code></dt>
+            <dd
+              class="flex-row align-items-start background-gray"
+              style="height: 100px"
+            >
+              <div
+                class="background-black margin-right-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>align-items-center</code></dt>
+            <dd
+              class="flex-row align-items-center background-gray"
+              style="height: 100px"
+            >
+              <div
+                class="background-black margin-right-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>align-items-end</code></dt>
+            <dd
+              class="flex-row align-items-end background-gray"
+              style="height: 100px"
+            >
+              <div
+                class="background-black margin-right-2"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+          </dl>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

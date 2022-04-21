@@ -1,0 +1,71 @@
+$sizes: (
+  '1': 1px,
+);
+
+@each $number, $size in $sizes {
+  .border-#{$number} {
+    border-width: $size !important;
+    border-style: solid !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .border-top-#{$number} {
+    border-top-width: $size !important;
+    border-top-style: solid !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .border-right-#{$number} {
+    border-right-width: $size !important;
+    border-right-style: solid !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .border-bottom-#{$number} {
+    border-bottom-width: $size !important;
+    border-bottom-style: solid !important;
+  }
+}
+
+@each $number, $size in $sizes {
+  .border-left-#{$number} {
+    border-left-width: $size !important;
+    border-left-style: solid !important;
+  }
+}
+
+.rounded-corners {
+  border-radius: 4px !important;
+}
+
+// Colors
+.border-black {
+  border-color: var(--black) !important;
+}
+
+.border-blue {
+  border-color: var(--blue) !important;
+}
+
+.border-gray {
+  border-color: var(--gray) !important;
+}
+
+.border-green {
+  border-color: var(--green) !important;
+}
+
+.border-orange {
+  border-color: var(--orange) !important;
+}
+
+.border-red {
+  border-color: var(--red) !important;
+}
+
+.border-white {
+  border-color: var(--white) !important;
+}
