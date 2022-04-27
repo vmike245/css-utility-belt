@@ -2,9 +2,9 @@
   "name": "css-utility-belt",
   "version": "0.0.2",
   "description": "Opinionated CSS utilities",
-  "main": "dest/index.css",
+  "main": "dist/index.css",
   "scripts": {
-    "build": "sass src/index.scss dist/index.css & cp src/example.html dist/index.html & cp dist/* docs",
+    "build": "sass src/index.scss dist/index.css & cp dist/* docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
