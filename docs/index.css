@@ -168,27 +168,27 @@
 }
 
 .margin-0 {
-  margin: 0px !important;
+  margin: "0px" !important;
 }
 
 .margin-1 {
-  margin: 0.25rem !important;
+  margin: "0.25rem" !important;
 }
 
 .margin-2 {
-  margin: 0.5rem !important;
+  margin: "0.5rem" !important;
 }
 
 .margin-3 {
-  margin: 1rem !important;
+  margin: "1rem" !important;
 }
 
 .margin-4 {
-  margin: 1.5rem !important;
+  margin: "1.5rem" !important;
 }
 
 .margin-5 {
-  margin: 2.5rem !important;
+  margin: "2.5rem" !important;
 }
 
 .margin-auto {
@@ -220,7 +220,7 @@
 }
 
 .margin-top-auto {
-  margin-top: "auto" !important;
+  margin-top: auto !important;
 }
 
 .margin-right-0 {
@@ -248,7 +248,7 @@
 }
 
 .margin-right-auto {
-  margin-right: "auto" !important;
+  margin-right: auto !important;
 }
 
 .margin-bottom-0 {
@@ -276,7 +276,7 @@
 }
 
 .margin-bottom-auto {
-  margin-bottom: "auto" !important;
+  margin-bottom: auto !important;
 }
 
 .margin-left-0 {
@@ -304,7 +304,7 @@
 }
 
 .margin-left-auto {
-  margin-left: "auto" !important;
+  margin-left: auto !important;
 }
 
 .margin-x-0 {
@@ -338,8 +338,8 @@
 }
 
 .margin-x-auto {
-  margin-left: "auto" !important;
-  margin-right: "auto" !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .margin-y-0 {
@@ -373,8 +373,8 @@
 }
 
 .margin-y-auto {
-  margin-top: "auto" !important;
-  margin-bottom: "auto" !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
 }
 
 .padding-0 {
@@ -402,7 +402,7 @@
 }
 
 .padding-auto {
-  padding: "auto" !important;
+  padding: auto !important;
 }
 
 .padding-top-0 {
@@ -430,7 +430,7 @@
 }
 
 .padding-top-auto {
-  padding-top: "auto" !important;
+  padding-top: auto !important;
 }
 
 .padding-right-0 {
@@ -458,7 +458,7 @@
 }
 
 .padding-right-auto {
-  padding-right: "auto" !important;
+  padding-right: auto !important;
 }
 
 .padding-bottom-0 {
@@ -486,7 +486,7 @@
 }
 
 .padding-bottom-auto {
-  padding-bottom: "auto" !important;
+  padding-bottom: auto !important;
 }
 
 .padding-left-0 {
@@ -514,7 +514,7 @@
 }
 
 .padding-left-auto {
-  padding-left: "auto" !important;
+  padding-left: auto !important;
 }
 
 .padding-x-0 {
@@ -548,8 +548,8 @@
 }
 
 .padding-x-auto {
-  padding-left: "auto" !important;
-  padding-right: "auto" !important;
+  padding-left: auto !important;
+  padding-right: auto !important;
 }
 
 .padding-y-0 {
@@ -583,8 +583,8 @@
 }
 
 .padding-y-auto {
-  padding-top: "auto" !important;
-  padding-bottom: "auto" !important;
+  padding-top: auto !important;
+  padding-bottom: auto !important;
 }
 
 .text-align-center {
