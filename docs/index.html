@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html class="height-100 width-100">
-  <header>
+  <head>
     <link rel="stylesheet" type="text/css" href="index.css" />
     <style>
       dt {
         font-weight: bold;
+      }
+      dd {
+        margin-bottom: 1.5rem;
       }
       pre,
       code {
@@ -13,15 +16,42 @@
       code {
         padding: 0 3px;
       }
+      * {
+        box-sizing: border-box;
+        font-family: Roboto, Helvetica Neue, sans-serif;
+      }
+      ul,
+      li {
+        list-style: none;
+        margin-bottom: 0.5rem;
+      }
     </style>
-  </header>
-  <body class="margin-0 width-100 height-100 flex-row">
+  </head>
+  <body
+    class="margin-0 width-100 height-100"
+    style="display: grid; grid-template-columns: 250px 1fr"
+  >
     <nav
       class="flex-column padding-4 border-right-1 border-black background-gray"
     >
       <h4 class="margin-0">Jump to section:</h4>
-      <ul>
-        <li class="text-red"><a href="#purpose">Purpose</a></li>
+      <ul class="padding-left-3">
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#differences">What makes this different?</a></li>
+        <li><a href="#usage">Getting Started</a></li>
+        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#questions">Questions</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <ul class="padding-left-3">
+          <li><a href="#background-examples">Background Classes</a></li>
+          <li><a href="#border-examples">Border Classes</a></li>
+          <li><a href="#display-examples">Display Classes</a></li>
+          <li><a href="#flex-examples">Flex Classes</a></li>
+          <li><a href="#overflow-examples">Overflow Classes</a></li>
+          <li><a href="#sizing-examples">Sizing Classes</a></li>
+          <li><a href="#spacing-examples">Spacing Classes</a></li>
+          <li><a href="#text-examples">Text Classes</a></li>
+        </ul>
       </ul>
     </nav>
     <main class="padding-4 overflow-auto">
@@ -47,29 +77,31 @@
           anyone use this? Because sometimes a limited set of options is more
           powerful than an infinite one. Limited options can help focus a
           discussion and allow quick decisions to be made, while also preventing
-          people from focusing on trivial details. <br />Let's use a real life
-          example. I was once talking with a designer about the placement of
-          some text. They wanted the text to have a margin of 34px. We didn't
+          people from focusing on trivial details. <br /><br />Let's use a real
+          life example. I was once talking with a designer about the placement
+          of some text. They wanted the text to have a margin of 34px. We didn't
           use that margin size anywhere else in the application. That could have
           triggered an in-depth conversation about why 34px was necessary.
           Instead I was able to say "We don't have a margin of 34px, but we have
           32px. Will that work?" The designer said sure, and we moved on. Those
           2px didn't matter at the end of the day. But from a code perspective
-          it would have created another one off style.<br />You could say that
-          this is an opinionated CSS library. I've taken all of CSS and said
-          "you will probably only need these". Will it limit your creative
+          it would have created another one off style.<br /><br />You could say
+          that this is an opinionated CSS library. I've taken all of CSS and
+          said "you will probably only need this". Will it limit your creative
           freedom, yeah probably. Will it help you quickly create UIs without
           having to decide if a 23px padding or a 24px padding looks better?
           100% yes.
         </p>
       </section>
-      <section id="useage">
+      <section id="usage">
         <h2>Getting Started</h2>
         <p>
-          All right, I've convinced you. How do you get started? That's simple,
-          in your project just run <code>npm install css-utility-belt</code>.
-          From there you should be able to just import the CSS file and you are
-          done. No compilation step, no configuring.
+          How do you get started? That's simple, in your project just run
+          <code>npm install css-utility-belt</code>. From there you should be
+          able to just import the CSS file into your main CSS file and you are
+          done. No compilation step, no configuring. For example, in an
+          <code>app.scss</code> you would add
+          <code>@import 'css-utility-belt';</code>
         </p>
       </section>
       <section id="configuration">
@@ -115,15 +147,14 @@
 
           <dt>Why are the class names so verbose?</dt>
           <dd>
-            This is improve readability and code reviews. While shortening the
-            various words would save a couple of keystrokes, it also makes it
-            slightly harder to read the code. Developers spend way more time
+            This is to improve readability and code reviews. While shortening
+            the various words would save a couple of keystrokes, it also makes
+            it slightly harder to read the code. Developers spend way more time
             reading code than they do actually writing it, so optimizing for
-            reading ease v.s. writing ease I felt made the most sense. It also
-            allows someone who has no concept of what the class names do to
-            guess without having to look at the rendered page. I think an
-            example is the best way to demonstrate this. Take a look at this
-            code snippet
+            ease of reading v.s. ease of writing seemed to make the most sense.
+            It also allows someone who has no concept of what the class names do
+            without having to look at the rendered page. I think an example is
+            the best way to demonstrate this. Take a look at this code snippet
             <pre
               class="padding-3"
             ><code>&lt;section class=&quot;background-blue padding-2 flex-column&quot;&gt;
@@ -316,10 +347,12 @@
               </div>
               <div class="flex-column align-items-center margin-right-2">
                 <dt><code>border-white</code></dt>
-                <dd
-                  class="border-1 border-white margin-left-0"
-                  style="height: 50px; width: 50px"
-                ></dd>
+                <dd class="padding-1 background-black">
+                  <div
+                    class="border-1 border-white margin-left-0"
+                    style="height: 50px; width: 50px"
+                  ></div>
+                </dd>
               </div>
             </dl>
           </div>
@@ -520,37 +553,1560 @@
         <div id="spacing-examples">
           <h3>Spacing Classes</h3>
           <dl>
-            <dt><code>height-100</code></dt>
-            <dd style="height: 50px">
+            <dt><code>margin-0</code></dt>
+            <dd class="flex-column align-items-center">
               <div
-                class="background-black height-100"
-                style="width: 50px"
+                class="background-black"
+                style="height: 50px; width: 50px"
               ></div>
-            </dd>
-            <dt><code>min-height-0</code></dt>
-            <dd class="flex-column" style="height: 75px">
-              <div class="height-100">
-                <div class="min-height-0 height-100 overflow-auto">
-                  <div
-                    class="background-black margin-bottom-2"
-                    style="height: 50px; width: 50px"
-                  ></div>
-                  <div
-                    class="background-black"
-                    style="height: 50px; width: 50px"
-                  ></div>
-                </div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-0"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
               </div>
-            </dd>
-            <dt><code>width-100</code></dt>
-            <dd style="width: 50px">
               <div
-                class="background-black width-100"
-                style="height: 50px"
+                class="background-black"
+                style="height: 50px; width: 50px"
               ></div>
             </dd>
-            <dt><code>min-width-0</code></dt>
-            <dd>min-width: 0 !important;</dd>
+            <dt><code>margin-1</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-1"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-2</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-2"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-3</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-3"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-4</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-4"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-5</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-5"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-auto</code></dt>
+            <dd class="flex-column align-items-center" style="height: 250px">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row width-100 margin-auto">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-auto"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-top-0</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-top-0"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-top-1</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-top-1"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-top-2</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-top-2"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-top-3</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-top-3"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-top-4</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-top-4"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-top-5</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-top-5"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-top-auto</code></dt>
+            <dd class="flex-column align-items-center" style="height: 250px">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row margin-top-auto">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-top-auto"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-right-0</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-right-0"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-right-1</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-right-1"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-right-2</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-right-2"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-right-3</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-right-3"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-right-4</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-right-4"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-right-5</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-right-5"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-right-auto</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row width-100">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-right-auto"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-bottom-0</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-bottom-0"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-bottom-1</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-bottom-1"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-bottom-2</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-bottom-2"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-bottom-3</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-bottom-3"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-bottom-4</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-bottom-4"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-bottom-5</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-bottom-5"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-bottom-auto</code></dt>
+            <dd class="flex-column align-items-center" style="height: 250px">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row margin-bottom-auto">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-left-0</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-left-0"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-left-1</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-left-1"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-left-2</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-left-2"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-left-3</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-left-3"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-left-4</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-left-4"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-left-5</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-left-5"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-left-auto</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row width-100">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-left-auto"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-x-0</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-x-0"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-x-1</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-x-1"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-x-2</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-x-2"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-x-3</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-x-3"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-x-4</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-x-4"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-x-5</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-x-5"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-x-auto</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row width-100">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-x-auto"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-y-0</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-y-0"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-y-1</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-y-1"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-y-2</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-y-2"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-y-3</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-y-3"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-y-4</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-y-4"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-y-5</code></dt>
+            <dd class="flex-column align-items-center">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black margin-y-5"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>margin-y-auto</code></dt>
+            <dd class="flex-column align-items-center" style="height: 250px">
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+              <div class="flex-row margin-y-auto">
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+                <div
+                  class="background-black"
+                  style="height: 50px; width: 50px"
+                ></div>
+              </div>
+              <div
+                class="background-black"
+                style="height: 50px; width: 50px"
+              ></div>
+            </dd>
+            <dt><code>padding-0</code></dt>
+            <dd>
+              <span class="display-inline-block border-1 border-black padding-0"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-1</code></dt>
+            <dd>
+              <span class="display-inline-block border-1 border-black padding-1"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-2</code></dt>
+            <dd>
+              <span class="display-inline-block border-1 border-black padding-2"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-3</code></dt>
+            <dd>
+              <span class="display-inline-block border-1 border-black padding-3"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-4</code></dt>
+            <dd>
+              <span class="display-inline-block border-1 border-black padding-4"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-5</code></dt>
+            <dd>
+              <span class="display-inline-block border-1 border-black padding-5"
+                >Text</span
+              >
+            </dd>
+
+            <dt><code>padding-top-0</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-top-0"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-top-1</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-top-1"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-top-2</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-top-2"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-top-3</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-top-3"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-top-4</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-top-4"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-top-5</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-top-5"
+                >Text</span
+              >
+            </dd>
+
+            <dt><code>padding-right-0</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-right-0"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-right-1</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-right-1"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-right-2</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-right-2"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-right-3</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-right-3"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-right-4</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-right-4"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-right-5</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-right-5"
+                >Text</span
+              >
+            </dd>
+
+            <dt><code>padding-bottom-0</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-bottom-0"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-bottom-1</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-bottom-1"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-bottom-2</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-bottom-2"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-bottom-3</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-bottom-3"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-bottom-4</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-bottom-4"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-bottom-5</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-bottom-5"
+                >Text</span
+              >
+            </dd>
+
+            <dt><code>padding-left-0</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-left-0"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-left-1</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-left-1"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-left-2</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-left-2"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-left-3</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-left-3"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-left-4</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-left-4"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-left-5</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-left-5"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-x-0</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-x-0"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-x-1</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-x-1"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-x-2</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-x-2"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-x-3</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-x-3"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-x-4</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-x-4"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-x-5</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-x-5"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-y-0</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-y-0"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-y-1</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-y-1"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-y-2</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-y-2"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-y-3</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-y-3"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-y-4</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-y-4"
+                >Text</span
+              >
+            </dd>
+            <dt><code>padding-y-5</code></dt>
+            <dd>
+              <span
+                class="display-inline-block border-1 border-black padding-y-5"
+                >Text</span
+              >
+            </dd>
+          </dl>
+        </div>
+        <div id="text-examples">
+          <h3>Text Classes</h3>
+          <dl>
+            <dt><code>text-align-center</code></dt>
+            <dd>
+              <div class="text-align-center">Text</div>
+            </dd>
+            <dt><code>text-bold</code></dt>
+            <dd><span class="text-bold">Text</span></dd>
+            <dt><code>text-italic</code></dt>
+            <dd><span class="text-italic">Text</span></dd>
+            <dt><code>text-black</code></dt>
+            <dd><span class="text-black">Text</span></dd>
+            <dt><code>text-blue</code></dt>
+            <dd><span class="text-blue">Text</span></dd>
+            <dt><code>text-gray</code></dt>
+            <dd>
+              <span
+                class="display-inline-block background-black padding-1 text-gray"
+                >Text</span
+              >
+            </dd>
+            <dt><code>text-green</code></dt>
+            <dd><span class="text-green">Text</span></dd>
+            <dt><code>text-orange</code></dt>
+            <dd><span class="text-orange">Text</span></dd>
+            <dt><code>text-red</code></dt>
+            <dd><span class="text-red">Text</span></dd>
+            <dt><code>text-white</code></dt>
+            <dd>
+              <span
+                class="display-inline-block background-black padding-1 text-white"
+                >Text</span
+              >
+            </dd>
           </dl>
         </div>
       </section>
